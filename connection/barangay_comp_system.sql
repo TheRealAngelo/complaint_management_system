@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2025 at 03:17 PM
+-- Generation Time: Apr 28, 2025 at 05:52 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -57,7 +57,7 @@ CREATE TABLE `residents` (
   `ResidentID` int(6) NOT NULL,
   `LastName` varchar(255) NOT NULL,
   `FirstName` varchar(255) NOT NULL,
-  `Address` int(11) NOT NULL,
+  `Address` varchar(255) NOT NULL,
   `UserID` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -125,7 +125,7 @@ ALTER TABLE `complaints`
 -- AUTO_INCREMENT for table `pending_users`
 --
 ALTER TABLE `pending_users`
-  MODIFY `PendingUserID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `PendingUserID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `residents`

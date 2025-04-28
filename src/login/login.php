@@ -1,6 +1,12 @@
 <?php
 session_start();
 require '../../connection/connect.php';
+
+// Generate a CSRF token 
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+require 'authentication.php';
 ?>
 
 <!DOCTYPE html>
