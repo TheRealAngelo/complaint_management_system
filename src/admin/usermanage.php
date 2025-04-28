@@ -1,5 +1,5 @@
 <?php
-session_start();
+require 'admin_auth.php';
 require '../../connection/connect.php';
 require 'pendingapp.php';
 

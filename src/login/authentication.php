@@ -36,23 +36,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["username"] = $username;
             $_SESSION["role"] = $user["Role"];
 
-            // Check if the user has completed their profile
+            // Redirect admin users directly to the admin dashboard
+            if ($user["Role"] === "Admin") {
+                header("Location: ../admin/dashboard.php");
+                exit;
+            }
+
+            // Check if the resident user has completed their profile
             $stmt = $conn->prepare("SELECT ResidentID FROM residents WHERE UserID = ?");
             $stmt->bind_param("i", $user["UserID"]);
             $stmt->execute();
             $profileResult = $stmt->get_result();
 
             if ($profileResult->num_rows === 0) {
+                // Redirect to profile completion if no profile exists
                 header("Location: ../residents/completeprofile.php");
                 exit;
             }
 
-            // Redirect based on role
-            if ($user["Role"] === "Admin") {
-                header("Location: ../admin/dashboard.php");
-            } elseif ($user["Role"] === "Resident") {
-                header("Location: ../residents/dashboard.php");
-            }
+            // Redirect resident users to their dashboard
+            header("Location: ../residents/dashboard.php");
             exit;
         } else {
             $_SESSION["error"] = "Invalid credentials.";
