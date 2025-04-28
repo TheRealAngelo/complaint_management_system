@@ -37,7 +37,7 @@ require 'authentication.php';
     // Show the error pop-up
     document.getElementById("errorPopup").style.display = "block";
 
-    // Automatically hide the pop-up after 5 seconds
+    // popup counter
     setTimeout(() => {
         document.getElementById("errorPopup").style.display = "none";
     }, 5000);
