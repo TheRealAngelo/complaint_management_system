@@ -10,7 +10,7 @@ require 'create.php';
 </head>
 <body>
     <form method="POST">
-        <label>Username:</label>
+        <label>Email:</label>
         <input type="text" name="username" required>
         <label>Password:</label>
         <input type="password" name="password" required>

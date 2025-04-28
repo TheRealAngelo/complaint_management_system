@@ -2,7 +2,7 @@
 session_start();
 require '../../connection/connect.php';
 
-// Generate a CSRF token 
+// CSRF token 
 if (!isset($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
@@ -20,8 +20,8 @@ require 'authentication.php';
 <div class="login-container">
     <form method="POST" action="authentication.php">
         <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-        <label>Username:</label>
-        <input type="text" placeholder="Username" name="username" required>
+        <label>Email:</label>
+        <input type="text" placeholder="Email" name="username" required>
         <label>Password:</label>
         <input type="password" placeholder="Password" name="password" required>
         <button type="submit">Login</button>

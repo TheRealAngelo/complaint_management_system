@@ -8,8 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: createaccount.php");
         exit;
     }
-
-    // Check if the username already exists
     $stmt = $conn->prepare("SELECT UserName FROM users WHERE UserName = ? UNION SELECT UserName FROM pending_users WHERE UserName = ?");
     $stmt->bind_param("ss", $username, $username);
     $stmt->execute();
@@ -20,8 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: createaccount.php");
         exit;
     }
-
-    // Insert into pending_users
     $stmt = $conn->prepare("INSERT INTO pending_users (UserName, Password) VALUES (?, ?)");
     $stmt->bind_param("ss", $username, $password);
 
