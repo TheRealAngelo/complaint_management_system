@@ -12,7 +12,7 @@ require 'authentication.php';
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BCS</title>
+    <title>Brgy Complaint System</title>
     <link rel="stylesheet" href="../../assets/css/login.css">
 </head>
 <body>
