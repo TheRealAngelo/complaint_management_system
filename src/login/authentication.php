@@ -38,15 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 exit;
             }
 
-            $stmt = $conn->prepare("SELECT ResidentID FROM residents WHERE UserID = ?");
-            $stmt->bind_param("i", $user["UserID"]);
-            $stmt->execute();
-            $profileResult = $stmt->get_result();
-
-            if ($profileResult->num_rows === 0) {
-                header("Location: ../residents/completeprofile.php");
-                exit;
-            }
             header("Location: ../residents/dashboard.php");
             exit;
         } else {
