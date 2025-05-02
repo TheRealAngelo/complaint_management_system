@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2025 at 05:52 PM
+-- Generation Time: May 02, 2025 at 03:55 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,10 @@ CREATE TABLE `pending_users` (
   `PendingUserID` int(6) NOT NULL,
   `UserName` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL,
-  `Role` enum('Resident') NOT NULL DEFAULT 'Resident'
+  `Role` enum('Resident') NOT NULL DEFAULT 'Resident',
+  `FirstName` varchar(255) NOT NULL,
+  `LastName` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -60,6 +63,13 @@ CREATE TABLE `residents` (
   `Address` varchar(255) NOT NULL,
   `UserID` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `residents`
+--
+
+INSERT INTO `residents` (`ResidentID`, `LastName`, `FirstName`, `Address`, `UserID`) VALUES
+(1, 'Morales', 'Angelo', '210B, Camachili st., Juna Subd.', 2);
 
 -- --------------------------------------------------------
 
@@ -79,7 +89,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `UserName`, `Password`, `Role`) VALUES
-(1, 'admin', '$2y$10$nQmLUESrIvzTtI7lvMxcUO0f09c7USQFMyPhjAJpZmZiTrmZ99ifu', 'Admin');
+(1, 'admin', '$2y$10$nQmLUESrIvzTtI7lvMxcUO0f09c7USQFMyPhjAJpZmZiTrmZ99ifu', 'Admin'),
+(2, 'morales.angelo2000@gmail.com', '$2y$10$z7LU/UEs9fbpuBNJfHlx9uUdiHSGkFK3SjTfKiAEdj91SniXmJ24e', 'Resident');
 
 --
 -- Indexes for dumped tables
@@ -125,19 +136,19 @@ ALTER TABLE `complaints`
 -- AUTO_INCREMENT for table `pending_users`
 --
 ALTER TABLE `pending_users`
-  MODIFY `PendingUserID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PendingUserID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `residents`
 --
 ALTER TABLE `residents`
-  MODIFY `ResidentID` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `ResidentID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `UserID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
